@@ -3,9 +3,9 @@
 // If score is reduce to 0 Alert lose of game!!!
 'use strict'
 //Variable holding random secret number to guess
-let score = 3
+let score = 10
 let highScore = 0
-let deviceRoll = Math.trunc(Math.random()*3) + 1
+let deviceRoll = Math.trunc(Math.random()*10) + 1
 console.log(deviceRoll)
 document.querySelector(".score-guess").textContent = score
 document.querySelector(".good-guess").textContent = highScore
@@ -17,6 +17,7 @@ function rollDice(){
     // if input is empty flash the empty notification!!!
  let inputVaue = document.querySelector(".pt").value
    if(!Number(inputVaue)){
+      debugger
       document.querySelector(".correct-num").textContent = "Please enter a number ......"
     
     
@@ -24,8 +25,13 @@ function rollDice(){
     //checking if the input value match with the random secret number: line 13
     //if device match score need to be increase
     document.querySelector(".correct-num").textContent = "You won!!!"
-    document.querySelector(".good-guess").textContent+=1
+   //  document.querySelector(".good-guess").textContent+=1
     document.querySelector("body").style.backgroundColor="green"
+    if(score > highScore){
+       highScore = score
+       document.querySelector(".good-guess").textContent = highScore
+
+    }
    }else if(Number(inputVaue) !== deviceRoll){
        //if the number of input does not match the device roll we need descrease the score
       document.querySelector(".flash-back").textContent= ""
@@ -34,10 +40,6 @@ function rollDice(){
       document.querySelector("body").style.backgroundColor="red"
     
 
-    
-   // }if (score < 1){
-   //    document.querySelector(".correct-num").textContent= `WoW!! You lost the Game ):`
-      
       
    }else if(Number(inputVaue) > deviceRoll){
       
@@ -58,9 +60,9 @@ function rollDice(){
 
 document.querySelector(".reset").addEventListener("click",resetFun)
 function resetFun(){
-   score = 3
+   score = 10
    //this handler function is going to reset all games back to default.
-   deviceRoll = Math.trunc(Math.random()*3) + 1
+   deviceRoll = Math.trunc(Math.random()*10) + 1
    document.querySelector(".correct-num").style.color= "white"
    document.querySelector("body").style.backgroundColor = "blueviolet"
    document.querySelector(".pt").value = ""
