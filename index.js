@@ -3,9 +3,9 @@
 // If score is reduce to 0 Alert lose of game!!!
 'use strict'
 //Variable holding random secret number to guess
-let score = 20
+let score = 3
 let highScore = 0
-let deviceRoll = Math.trunc(Math.random()*20) + 1
+let deviceRoll = Math.trunc(Math.random()*3) + 1
 console.log(deviceRoll)
 document.querySelector(".score-guess").textContent = score
 document.querySelector(".good-guess").textContent = highScore
@@ -24,12 +24,13 @@ function rollDice(){
     //if device match score need to be increase
     document.querySelector(".correct-num").textContent = "You won!!!"
     document.querySelector(".good-guess").textContent+=1
+    document.querySelector("body").style.backgroundColor="green"
    }else if(Number(inputVaue) !== deviceRoll){
        //if the number of input does not match the device roll we need descrease the score
       document.querySelector(".flash-back").textContent= ""
       document.querySelector(".correct-num").textContent = `sorry your score reduce!!!${score-=1}`
       document.querySelector(".score-guess").textContent = score
-      
+      document.querySelector("body").style.backgroundColor="red"
     
 
     
@@ -54,10 +55,10 @@ function rollDice(){
     }
 }
 
-document.querySelector(".reset").addEventListener("click",resetFun)
-function resetFun(){
+// document.querySelector(".reset").addEventListener("click",resetFun)
+// function resetFun(score){
  
- document.querySelector(".pt").value = ""
-
-
-}
+//  document.querySelector(".pt").value = ""
+//  document.querySelector(".correct-num").textContent =""
+//  document.querySelector(".score-guess").textContent = score
+// }
