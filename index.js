@@ -54,3 +54,10 @@ function rollDice(){
     }
 }
 
+document.querySelector(".reset").addEventListener("click",resetFun)
+function resetFun(){
+ 
+ document.querySelector(".pt").value = ""
+
+
+}
