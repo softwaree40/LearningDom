@@ -4,9 +4,11 @@
 'use strict'
 //Variable holding random secret number to guess
 let score = 20
+let highScore = 0
 let deviceRoll = Math.trunc(Math.random()*20) + 1
 console.log(deviceRoll)
 document.querySelector(".score-guess").textContent = score
+document.querySelector(".good-guess").textContent = highScore
 document.querySelector(".click").addEventListener("click",rollDice) 
 // Creating event listener to listen to the click 
 // Passing event handler function into the eventlistener
@@ -17,7 +19,7 @@ function rollDice(){
       document.querySelector(".correct-num").textContent = "Please enter a number ......"
     
     
-   }else if(Number(inputVaue) === deviceRoll){
+   }else if(Number(inputVaue) === deviceRoll ){
     //checking if the input value match with the random secret number: line 13
     //if device match score need to be increase
     document.querySelector(".correct-num").textContent = "You won!!!"
@@ -25,22 +27,30 @@ function rollDice(){
    }else if(Number(inputVaue) !== deviceRoll){
        //if the number of input does not match the device roll we need descrease the score
       document.querySelector(".flash-back").textContent= ""
-      document.querySelector(".score-guess").textContent-=`${1}`
-      document.querySelector(".correct-num").textContent = "sorry your score reduce!!!"
- 
+      document.querySelector(".correct-num").textContent = `sorry your score reduce!!!${score-=1}`
+      document.querySelector(".score-guess").textContent = score
+      
+    
 
     
-   }if (score <= 1){
-       document.querySelector(".correct-num").textContent = "WoW!! You lost the Game ):" 
+   // }if (score < 1){
+   //    document.querySelector(".correct-num").textContent= `WoW!! You lost the Game ):`
+      
       
    }else if(Number(inputVaue) > deviceRoll){
+      
       document.querySelector(".correct-num").textContent = "Your Number is too High!!" 
-
+      
    }else if ( Number(inputVaue) < deviceRoll){
-
+      
       document.querySelector(".correct-num").textContent = "Your Number is too Low!!"
-
+   
    }
+   
+    if(score < 0){
 
+      document.querySelector(".correct-num").textContent = "Sorry you lost the Game!!"
+      
+    }
 }
 
