@@ -10,6 +10,7 @@ console.log(deviceRoll)
 document.querySelector(".score-guess").textContent = score
 document.querySelector(".good-guess").textContent = highScore
 document.querySelector(".click").addEventListener("click",rollDice) 
+document.querySelector(".correct-num").style.color= "white"
 // Creating event listener to listen to the click 
 // Passing event handler function into the eventlistener
 function rollDice(){
@@ -55,10 +56,14 @@ function rollDice(){
     }
 }
 
-// document.querySelector(".reset").addEventListener("click",resetFun)
-// function resetFun(score){
- 
-//  document.querySelector(".pt").value = ""
-//  document.querySelector(".correct-num").textContent =""
-//  document.querySelector(".score-guess").textContent = score
-// }
+document.querySelector(".reset").addEventListener("click",resetFun)
+function resetFun(){
+   score = 3
+   //this handler function is going to reset all games back to default.
+   deviceRoll = Math.trunc(Math.random()*3) + 1
+   document.querySelector(".correct-num").style.color= "white"
+   document.querySelector("body").style.backgroundColor = "blueviolet"
+   document.querySelector(".pt").value = ""
+   document.querySelector(".score-guess").textContent = score
+   document.querySelector(".correct-num").textContent = "Start Guessing ...."
+}
